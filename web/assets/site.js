@@ -43,7 +43,7 @@
             <h2>${esc(t.title)}</h2>
             <p class="mo-ta">${esc(t.area_label)}${t.land_area_m2 ? " · " + m2(t.land_area_m2) + " đất" : ""}</p>
             <p class="mo-ta">${esc(t.tagline)}</p>
-            <div class="gia">${gia(t.asking_price)} <small>giá chào</small></div>
+            <div class="gia">${t.asking_price == null ? "Giá: liên hệ" : gia(t.asking_price) + " <small>giá chào</small>"}</div>
           </div>
         </a>`).join("");
     } catch (e) {
@@ -79,9 +79,9 @@
             <p>${esc(t.summary)}</p>
           </div>
           <aside class="hop-gia">
-            <span class="nhan">Giá chào bán</span>
+            <span class="nhan">Giá bán</span>
             <div class="so">${t.asking_price ? Number(t.asking_price).toLocaleString("vi-VN") + " đ" : "Liên hệ"}</div>
-            <p>${esc(t.price_note)}</p>
+            <p>${t.asking_price == null ? "Nhắn Zalo hoặc WhatsApp để nhận giá và hồ sơ chi tiết." : esc(t.price_note)}</p>
             ${lienHe(t.title)}
           </aside>
         </section>
